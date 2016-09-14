@@ -1,0 +1,16 @@
+{
+  "name": "vef2a",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://eldsmith@bitbucket.org/eldsmith/vef2a.git"
+  },
+  "author": "Friðberg Reynir Traustason",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/eldsmith/vef2a#readme"
+}
