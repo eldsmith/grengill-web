@@ -12,5 +12,11 @@
   },
   "author": "Friðberg Reynir Traustason",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/eldsmith/vef2a#readme"
+  "homepage": "https://bitbucket.org/eldsmith/vef2a#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "lokijs": "^1.4.1",
+    "twitter": "^1.4.0"
+  }
 }
