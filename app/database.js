@@ -1,3 +1,5 @@
+//Seeding the database
+
 var db = require('./util/db');
 
 db.addCollection('top').insert([
