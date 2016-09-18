@@ -10,5 +10,4 @@ app.use(express.static(__dirname + '/../public'));
 require('./database.js');
 require('./routes.js')(app);
 
-console.log(module.exports);
 module.exports = app;
