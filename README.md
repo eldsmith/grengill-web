@@ -21,4 +21,4 @@ Planið var að vinna verkefnið á scotch.io og fara svo að vinna að minni ei
 ### Leiðbeiningar ###
 
 * Til að skoða verkefnið þá er því hýst á heroku hér: https://fridberg-vef2a.herokuapp.com/
-* Annars til að runna því local þá ætti ekki að þurfa gera meira en bara `npm install` og keyra upp main.js á node (held ég...)
+* Annars til að runna því local þá ætti ekki að þurfa gera meira en bara `npm install` og keyra upp main.js á node og setja upp .env breytur
