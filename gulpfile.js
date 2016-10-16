@@ -9,7 +9,7 @@ gulp.task('css', ()=>{
   // output file to a dist/
   return gulp.src(['./src/sass/main.scss'])
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.sass().on('error', plugins.sass.logError))
+    .pipe(plugins.sass({includePaths: ['./node_modules/bulma']}).on('error', plugins.sass.logError))
     .pipe(plugins.cssmin())
     .pipe(plugins.autoprefixer())
     .pipe(plugins.sourcemaps.write())
