@@ -4,3 +4,26 @@ body{
   background-color: white;
   padding-bottom: 20em;
 }
+
+.flex-vcenter{
+  align-items: center;
+}
+
+.rounded{
+  border-radius: 10px;
+}
+
+.youtube-result{
+  @media screen and (min-width: $tablet) {
+    margin: 2em 0;
+  }
+}
+
+.mobile-pad{
+  @media screen and (min-width: $tablet - 280) and (max-width: $tablet - 100) {
+    margin: 0 10%;
+  }
+  @media screen and (min-width: $tablet - 100) and (max-width: $tablet) {
+    margin: 0 20%;
+  }
+}

@@ -1,5 +1,8 @@
-var YouTube = require('youtube-node');
-var youTube = new YouTube();
-youTube.setKey(process.env.YOUTUBE_API_KEY);
+var YouTube = require('youtube-api');
 
-module.exports = youTube;
+YouTube.authenticate({
+    type: "key",
+    key: process.env.YOUTUBE_API_KEY
+});
+
+module.exports = YouTube;

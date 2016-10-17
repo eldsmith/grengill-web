@@ -1,5 +1,5 @@
 //Controller that handles rendering the views, fetching and passing in relevant data
-youTube = require('../util/youtube.js');
+YouTube = require('../util/youtube.js');
 
 exports.home = function(req, res){
   res.render('index');
@@ -10,7 +10,21 @@ exports.search = function(req, res){
 
   var p = new Promise((resolve, reject)=>{
 
-    youTube.search(req.query.search, 2, (error, result) => {
+    var params = {
+       q: req.query.search,
+       type:"video",
+       maxResults: 10,
+       part: "snippet"
+     }
+
+    if(req.query.pageToken){
+
+      params.pageToken = req.query.pageToken;
+      console.log(params);
+
+    }
+    console.log("hello");
+    YouTube.search.list(params, (error, result)=>{
       if (error) {
         reject(error);
       }
@@ -18,12 +32,16 @@ exports.search = function(req, res){
         resolve(result);
       }
     });
-
   });
 
   p.then((result) => {
-    res.render('index', {search : result.items[0].snippet});
-    console.log(result.items);
+    console.log(result.nextPageToken);
+    res.render('index', {
+      search : result.items,
+      pageToken : result.nextPageToken,
+      prevSearch : req.query.search
+    });
+
   });
 
 };

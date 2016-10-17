@@ -12,14 +12,18 @@ block content
     hr
 
   div.container
-    div.box
-      article.media
-        div.media-left
-          figure.image.is-128x128
-            img(src=search.thumbnails.default.url alt="Image")
-        div.media-content
-          div.content
-            p
-              strong=search.title
-              br
-              p=search.description
+    if search
+      each video in search
+        - video = video.snippet
+          div.box.youtube-result
+            div.columns.flex-vcenter
+              div.column
+                figure.image.is-1by2.mobile-pad
+                  img.rounded(src=video.thumbnails.medium.url alt="Image")
+              div.column.is-three-quarters
+                h1.title=video.title
+                h2.subtitle=video.description
+    if pageToken
+      form(action="/search" method="get")
+        button.button.is-primary(name="pageToken" type="submit" value=pageToken) Next Page
+        input(name="search" type="text" value=prevSearch)
