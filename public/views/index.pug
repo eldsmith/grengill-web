@@ -26,4 +26,4 @@ block content
     if pageToken
       form(action="/search" method="get")
         button.button.is-primary(name="pageToken" type="submit" value=pageToken) Next Page
-        input(name="search" type="text" value=prevSearch)
+        input(name="search" type="hidden" value=prevSearch)
