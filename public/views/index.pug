@@ -16,14 +16,20 @@ block content
       each video in search
         - video = video.snippet
           div.box.youtube-result
-            div.columns.flex-vcenter
-              div.column
-                figure.image.is-1by2.mobile-pad
-                  img.rounded(src=video.thumbnails.medium.url alt="Image")
-              div.column.is-three-quarters
+            div.columns
+              div.column.is-2.is-hidden-mobile
+                figure.image.is-1by2
+                  img.rounded.soft-shadow(src=video.thumbnails.medium.url alt="Image")
+              div.column.is-10
                 h1.title=video.title
                 h2.subtitle=video.description
-    if pageToken
-      form(action="/search" method="get")
-        button.button.is-primary(name="pageToken" type="submit" value=pageToken) Next Page
-        input(name="search" type="hidden" value=prevSearch)
+
+      nav.level
+        div.level-left
+        div.level-right
+          form(action="/search" method="get")
+            input(name="search" type="hidden" value=prevSearch)
+            if prevPageToken
+              button.level-item.button.is-primary.is-large(name="pageToken" type="submit" value=prevPageToken) Previous Page
+            if nextPageToken
+              button.level-item.button.is-primary.is-large(name="pageToken" type="submit" value=nextPageToken) Next Page

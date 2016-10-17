@@ -18,12 +18,10 @@ exports.search = function(req, res){
      }
 
     if(req.query.pageToken){
-
       params.pageToken = req.query.pageToken;
       console.log(params);
-
     }
-    console.log("hello");
+
     YouTube.search.list(params, (error, result)=>{
       if (error) {
         reject(error);
@@ -35,12 +33,16 @@ exports.search = function(req, res){
   });
 
   p.then((result) => {
-    console.log(result.nextPageToken);
-    res.render('index', {
+    let data = {
       search : result.items,
-      pageToken : result.nextPageToken,
       prevSearch : req.query.search
-    });
+    }
+
+    if(result.nextPageToken) data.nextPageToken = result.nextPageToken;
+    if(result.prevPageToken) data.prevPageToken = result.prevPageToken;
+
+    console.log(data);
+    res.render('index', data);
 
   });
 
