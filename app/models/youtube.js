@@ -1,3 +1,5 @@
+//TODO: Implement youtubeController
+
 const YouTube = require('youtube-api');
 
 YouTube.authenticate({
@@ -5,7 +7,7 @@ YouTube.authenticate({
   key: process.env.YOUTUBE_API_KEY
 });
 
-const search = (query)=>{
+exports.search = (query)=>{
   return new Promise((resolve, reject)=>{
 
     var params = {
@@ -28,6 +30,8 @@ const search = (query)=>{
       }
     });
   }).then((result) => {
+    //TODO: Match youtubeURLS in results with saved songs in db, perhaps not in youtube.js though
+
     let data = {
       search : result.items,
       prevSearch : query.search,
@@ -42,7 +46,33 @@ const search = (query)=>{
   });
 };
 
+exports.getVideoInfo = (videoIds)=>{
+  return new Promise((resolve, reject)=>{
 
-module.exports = {
-  search: search
+    var params = {
+      id: videoIds,
+      maxResults: 10,
+      part: 'contentDetails'
+    };
+
+    YouTube.videos.list(params, (error, result)=>{
+      if (error) {
+        reject(error);
+      }
+      else {
+        resolve(result);
+      }
+    });
+  }).then((result) => {
+    //TODO: Match youtubeURLS in results with saved songs in db, perhaps not in youtube.js though
+
+    let data = {
+      search : result.items
+    };
+
+    //Return new promise to allow chaining
+    return new Promise((resolve)=>{
+      resolve(data);
+    });
+  });
 };

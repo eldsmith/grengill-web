@@ -1,5 +1,5 @@
 require('dotenv').config();
-//require('./app/util/db');
+require('./app/models/songs');
 
 var app = require('./app/server'); //import the contents of servers module.exports
 
