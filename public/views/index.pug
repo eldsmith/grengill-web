@@ -1,7 +1,7 @@
 extends layouts/master.pug
 
 block content
-  section.section
+  section.section.grengil-title
     div.columns
       div.column.has-text-centered.is-half.is-offset-one-quarter
         h1.title GrengilBot
@@ -9,12 +9,13 @@ block content
         p.control.has-icon.has-icon-right
           form(action="/search" method="get")
             input.input(type="text" name="search" placeholder="Search YouTube")
-    hr
+    
 
-  div.container
+  div.container.result-container
     if search
       each video in search
         - video = video.snippet
+
           div.box.youtube-result
             div.columns
               div.column.is-2.is-hidden-mobile
@@ -22,7 +23,7 @@ block content
                   img.rounded.soft-shadow(src=video.thumbnails.medium.url alt="Image")
               div.column.is-10
                 h1.title=video.title
-                h2.subtitle=video.description
+                h2.subtitle=video.duration
 
       nav.level
         div.level-left

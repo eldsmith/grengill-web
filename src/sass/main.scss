@@ -1,7 +1,9 @@
 @import "bulma";
+$pop-mustard : rgb(255, 176, 0);
+$deep-red: rgb(125, 0, 0);
 
 body{
-  background-color: white;
+  background-color: $deep-red;
   padding-bottom: 20em;
 }
 
@@ -17,17 +19,32 @@ body{
   box-shadow: 0px 0px 20px 2px #b0b4ba;
 }
 
-.youtube-result{
+.grengil-title{
+  padding-bottom: 5em;
+}
 
+.result-container{
+  margin-top: 4%;
+}
+
+.youtube-result{
+  background-color: rgb(255, 255, 255);
+  //border: 1px grey solid;
+  box-shadow: 0px 0px 10px 2px #1b1c1d;
   @media screen and (min-width: $tablet) {
     margin: 0;
+    margin-top: 2em;
+    max-width: 70%;
+    margin-left: 15%;
   }
 
   h1{
+    //color: rgb(255, 255, 255);
     font-size: 20px;
   }
 
   h2{
+    //color: rgb(255, 255, 255);
     font-size: 16px;
   }
 
