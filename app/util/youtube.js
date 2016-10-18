@@ -30,12 +30,12 @@ const search = (query)=>{
   }).then((result) => {
     let data = {
       search : result.items,
-      prevSearch : query.search
+      prevSearch : query.search,
+      nextPageToken : result.nextPageToken,
+      prevPageToken : result.prevPageToken
     };
 
-    if(result.nextPageToken) data.nextPageToken = result.nextPageToken;
-    if(result.prevPageToken) data.prevPageToken = result.prevPageToken;
-
+    //Return new promise to allow chaining
     return new Promise((resolve)=>{
       resolve(data);
     });
