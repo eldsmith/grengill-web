@@ -6,45 +6,40 @@ YouTube.authenticate({
 });
 
 const search = (query)=>{
+  return new Promise((resolve, reject)=>{
 
-  return new Promise((resolve_a, reject_a)=>{
-    var p = new Promise((resolve)=>{
+    var params = {
+      q: query.search,
+      type: 'video',
+      maxResults: 10,
+      part: 'snippet'
+    };
 
-      var params = {
-        q: query.search,
-        type: 'video',
-        maxResults: 10,
-        part: 'snippet'
-      };
+    if(query.pageToken){
+      params.pageToken = query.pageToken;
+    }
 
-      if(query.pageToken){
-        params.pageToken = query.pageToken;
-        console.log(params);
+    YouTube.search.list(params, (error, result)=>{
+      if (error) {
+        reject(error);
       }
-
-      YouTube.search.list(params, (error, result)=>{
-        if (error) {
-          reject_a(error);
-        }
-        else {
-          resolve(result);
-        }
-      });
+      else {
+        resolve(result);
+      }
     });
+  }).then((result) => {
+    let data = {
+      search : result.items,
+      prevSearch : query.search
+    };
 
-    p.then((result) => {
-      let data = {
-        search : result.items,
-        prevSearch : query.search
-      };
+    if(result.nextPageToken) data.nextPageToken = result.nextPageToken;
+    if(result.prevPageToken) data.prevPageToken = result.prevPageToken;
 
-      if(result.nextPageToken) data.nextPageToken = result.nextPageToken;
-      if(result.prevPageToken) data.prevPageToken = result.prevPageToken;
-
-      resolve_a(data);
+    return new Promise((resolve)=>{
+      resolve(data);
     });
   });
-
 };
 
 
