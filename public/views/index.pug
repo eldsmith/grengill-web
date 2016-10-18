@@ -9,7 +9,7 @@ block content
         p.control.has-icon.has-icon-right
           form(action="/search" method="get")
             input.input(type="text" name="search" placeholder="Search YouTube")
-    
+
 
   div.container.result-container
     if search
@@ -18,7 +18,7 @@ block content
 
           div.box.youtube-result
             div.columns
-              div.column.is-2.is-hidden-mobile
+              div.column.is-2
                 figure.image.is-1by2
                   img.rounded.soft-shadow(src=video.thumbnails.medium.url alt="Image")
               div.column.is-10

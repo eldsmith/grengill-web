@@ -1,4 +1,4 @@
-var core = require('./controllers/core');
+var core = require('./controllers/coreController');
 
 //Sets the routes to the core controller methods they correspond to
 module.exports = function(app){
