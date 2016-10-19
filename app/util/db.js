@@ -1,5 +1,5 @@
 
-/*const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 
 // Connection URL
 const url = 'mongodb://localhost:27017/grengilbot';
@@ -32,4 +32,3 @@ exports.findDocuments = (db, coll, data, callback)=>{
   // Find some documents
   collection.find(data).toArray((err, result)=>callback(err, result));
 };
-*/
