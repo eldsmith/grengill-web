@@ -12,8 +12,8 @@ block content
 
 
   div.container.result-container
-    if search
-      each video in search
+    if items
+      each video in items
         - video = video.snippet
 
           div.box.youtube-result
