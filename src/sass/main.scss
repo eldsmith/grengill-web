@@ -1,9 +1,15 @@
 @import "bulma";
 $pop-mustard : rgb(255, 176, 0);
 $deep-red: rgb(125, 0, 0);
+$dark-font-color: rgb(40, 39, 39);
 
 html{
   background-color: $deep-red;
+}
+
+body{
+  margin-bottom: 3em;
+  color: $dark-font-color;
 }
 
 .flex-vcenter{
@@ -47,6 +53,17 @@ html{
     font-size: 16px;
   }
 
+}
+
+.page-btn{
+  background-color: $pop-mustard;
+  border-color: lighten($pop-mustard, 10);
+  color: $dark-font-color;
+  width: 6em;
+}
+
+.test{
+  width: 85%;
 }
 
 .mobile-pad{

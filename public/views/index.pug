@@ -17,20 +17,24 @@ block content
         - video = video.snippet
 
           div.box.youtube-result
-            div.columns
+            div.columns.flex-vcenter
               div.column.is-2
                 figure.image.is-1by2
                   img.rounded.soft-shadow(src=video.thumbnails.medium.url alt="Image")
-              div.column.is-10
+              div.column.is-9
                 h1.title=video.title
                 h2.subtitle=video.duration
+              div.column.is-1
+                i.fa.fa-plus.fa-2x
 
-      nav.level
+      nav.level.test
         div.level-left
         div.level-right
           form(action="/search" method="get")
             input(name="search" type="hidden" value=prevSearch)
             if prevPageToken
-              button.level-item.button.is-primary.is-large(name="pageToken" type="submit" value=prevPageToken) Previous Page
+              button.level-item.button.page-btn.is-medium(name="pageToken" type="submit" value=prevPageToken)
+                i.fa.fa-arrow-left
             if nextPageToken
-              button.level-item.button.is-primary.is-large(name="pageToken" type="submit" value=nextPageToken) Next Page
+              button.level-item.button.page-btn.is-medium(name="pageToken" type="submit" value=nextPageToken)
+                i.fa.fa-arrow-right
