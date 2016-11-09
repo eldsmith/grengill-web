@@ -14,18 +14,18 @@ block content
   div.container.result-container
     if items
       each video in items
-        - video = video.snippet
+        - var snippet = video.snippet
 
           div.box.youtube-result
             div.columns.flex-vcenter
               div.column.is-2
                 figure.image.is-1by2
-                  img.rounded.soft-shadow(src=video.thumbnails.medium.url alt="Image")
+                  img.rounded.soft-shadow(src=snippet.thumbnails.medium.url alt="Image")
               div.column.is-9
-                h1.title=video.title
-                h2.subtitle=video.duration
+                h1.title=snippet.title
+                h2.subtitle=snippet.duration
               div.column.is-1
-                i.fa.fa-plus.fa-2x
+                i.fa.fa-plus.fa-2x.addSongBtn(youtubeId=video.id.videoId)
 
       nav.level.test
         div.level-left
@@ -38,3 +38,12 @@ block content
             if nextPageToken
               button.level-item.button.page-btn.is-medium(name="pageToken" type="submit" value=nextPageToken)
                 i.fa.fa-arrow-right
+
+block scripts
+  script.
+    var socket = io('http://localhost:3010');
+    $
+    $('.addSongBtn').click(function(){
+      console.log($(this).attr('youtubeId'));
+      socket.emit('songAdd', $(this).attr('youtubeId'))
+    });
