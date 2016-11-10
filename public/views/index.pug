@@ -44,6 +44,16 @@ block scripts
     var socket = io('http://localhost:3010');
     $
     $('.addSongBtn').click(function(){
-      console.log($(this).attr('youtubeId'));
-      socket.emit('songAdd', $(this).attr('youtubeId'))
+      let songBtn = $(this);
+      if(!songBtn.attr('added'))
+      {
+        songBtn.addClass('button is-loading is-link'); //while loading show loading icon
+        socket.emit('songAdd', songBtn.attr('youtubeId'), ()=>{
+          //FIXME: should have success and error params
+          //After assuming that a song is successfully added
+          songBtn.removeClass('button is-loading is-link fa-plus');
+          songBtn.addClass('fa-check');
+          songBtn.attr('added', true);
+        });
+      }
     });
