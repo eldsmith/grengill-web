@@ -2,6 +2,8 @@
 ----
 This is a web interface for [Grengill Discord Bot](https://github.com/eldsmith/grengill-discord-bot) that allows you to search for songs on youtube and add them directly to an instance of Grengill Discord Bot running on a [Discord](https://discord.gg) server. Grengill Web is still in alpha with many more features to come.
 
+[Demonstration](https://my.mixtape.moe/lrrowi.mp4)
+
 ### Planned Features ###
 * History along with removing entries from history
 * Playlists
