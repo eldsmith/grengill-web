@@ -41,8 +41,7 @@ block content
 
 block scripts
   script.
-    var socket = io('http://localhost:3010');
-    $
+    var socket = io('#{env.GRENGILL_SOCKET}');
     $('.addSongBtn').click(function(){
       let songBtn = $(this);
       if(!songBtn.attr('added'))
